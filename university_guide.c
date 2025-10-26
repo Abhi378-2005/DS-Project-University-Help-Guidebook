@@ -187,7 +187,7 @@ void loadAllRecords() {
     loadLocationData(); // Loads locations into Hash Table
     
     // --- Load Students ---
-    FILE *fp = fopen("students.dat", "r");
+    FILE *fp = fopen("db/students.dat", "r");
     studentCount = 0;
     if (fp) {
         char line[MAX_LINE_LENGTH];
@@ -209,7 +209,7 @@ void loadAllRecords() {
     }
 
     // --- Load Courses ---
-    fp = fopen("courses.dat", "r");
+    fp = fopen("db/courses.dat", "r");
     courseCount = 0;
     if (fp) {
         char line[MAX_LINE_LENGTH];
@@ -228,7 +228,7 @@ void loadAllRecords() {
     }
     
     // --- Load Faculty ---
-    fp = fopen("faculty.dat", "r");
+    fp = fopen("db/faculty.dat", "r");
     facultyCount = 0;
     if (fp) {
         char line[MAX_LINE_LENGTH];
@@ -250,7 +250,7 @@ void loadAllRecords() {
 
 // Saves Student records from memory array back to file
 void saveStudentRecords() {
-    FILE *fp = fopen("students.dat", "w");
+    FILE *fp = fopen("db/students.dat", "w");
     if (!fp) {
         printf("Error: Could not open students.dat for writing.\n");
         return;
@@ -267,7 +267,7 @@ void saveStudentRecords() {
 
 // Saves Course records from memory array back to file
 void saveCourseRecords() {
-    FILE *fp = fopen("courses.dat", "w");
+    FILE *fp = fopen("db/courses.dat", "w");
     if (!fp) {
         printf("Error: Could not open courses.dat for writing.\n");
         return;
@@ -283,7 +283,7 @@ void saveCourseRecords() {
 
 // Saves Faculty records from memory array back to file
 void saveFacultyRecords() {
-    FILE *fp = fopen("faculty.dat", "w");
+    FILE *fp = fopen("db/faculty.dat", "w");
     if (!fp) {
         printf("Error: Could not open faculty.dat for writing.\n");
         return;
@@ -343,7 +343,7 @@ void loadLocationData() {
         hashTable[i] = NULL;
     }
 
-    FILE *fp = fopen("university_data.txt", "r");
+    FILE *fp = fopen("db/university_data.txt", "r");
     if (fp == NULL) {
         printf("Warning: 'university_data.txt' not found or could not be opened. Location features will be empty.\n");
         return;
@@ -375,7 +375,7 @@ void loadLocationData() {
 
 // Appends a new location to the data file
 void saveLocationToFile(const char *key, const char *building, const char *floor, const char *room, const char *desc) {
-    FILE *fp = fopen("university_data.txt", "a"); // 'a' for append mode
+    FILE *fp = fopen("db/university_data.txt", "a"); // 'a' for append mode
     if (fp == NULL) {
         printf("Error: Could not open university_data.txt for writing.\n");
         return;
@@ -387,7 +387,7 @@ void saveLocationToFile(const char *key, const char *building, const char *floor
 
 // Rewrites the entire location file from the current Hash Table state
 void rewriteLocationFile() {
-    FILE *fp = fopen("university_data.txt", "w"); // 'w' for overwrite mode
+    FILE *fp = fopen("db/university_data.txt", "w"); // 'w' for overwrite mode
     if (fp == NULL) {
         printf("Error: Could not open university_data.txt for writing.\n");
         return;
@@ -633,7 +633,7 @@ void loginMenu() {
         char *inputPass = getInput("Password: ");
         strncpy(password, inputPass, MAX_ID_LENGTH);
 
-        FILE *fp = fopen("users.dat", "r");
+        FILE *fp = fopen("db/users.dat", "r");
         int authenticated = 0;
 
         if (fp == NULL) {
@@ -886,7 +886,7 @@ void viewNotices() {
     printf("======================================================\n");
     printf("Instruction: Check here for important announcements.\n\n");
 
-    FILE *fp = fopen("notices.txt", "r");
+    FILE *fp = fopen("db/notices.txt", "r");
     if (fp == NULL) {
         printf("Error: 'notices.txt' file not found.\n");
         return;
@@ -1077,7 +1077,7 @@ void addStudentRecord() {
     saveStudentRecords();
     
     // Also add a default entry to users.dat for login (password = student ID)
-    FILE *fp = fopen("users.dat", "a");
+    FILE *fp = fopen("db/users.dat", "a");
     if (fp) {
         fprintf(fp, "%s,%s,student\n", students[index].id, students[index].id);
         fclose(fp);
@@ -1487,7 +1487,7 @@ void editNotices() {
     printf("Instruction: You can directly edit the 'notices.txt' file.\n");
     printf("Note: For this console application, we will overwrite the file content.\n\n");
 
-    FILE *fp = fopen("notices.txt", "w");
+    FILE *fp = fopen("db/notices.txt", "w");
     if (fp == NULL) {
         printf("Error: Could not open notices.txt for writing.\n");
         return;
