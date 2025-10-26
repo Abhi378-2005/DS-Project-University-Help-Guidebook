@@ -1,0 +1,22 @@
+Compiled Executables
+
+university_guide
+university_guide.exe
+
+Object files
+
+*.o
+*.obj
+
+Temporary/Backup files
+
+*~
+*.bak
+
+VS Code specific files
+
+.vscode/
+
+Build directory (if you use one)
+
+build/
