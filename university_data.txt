@@ -1,0 +1,11 @@
+# Location Data File
+# Format: key;building;floor;room;description
+
+computer_eng;Main Building;1st;Room 101;Computer Engineering Department
+electronics_eng;Main Building;2nd;Room 201;Electronics Engineering Department
+mechanical_eng;Academic Block A;1st;Lab 101;Mechanical Engineering Department
+it_dept;Academic Block B;2nd;Room 202;Information Technology Department
+library;Library Building;Ground;Reading Room;All Departments
+badminton;Sports Complex;Ground;Badminton Court;Recreational Activities
+boys_hostel;Hostel Block 1;1st;Boys Hostel Room 101;Accommodation
+girls_hostel;Hostel Block 2;1st;Girls Hostel Room 201;Accommodation
